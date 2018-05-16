@@ -1,0 +1,21 @@
+<h1>Restful Tasks Interactive</h1>
+<!-- waiting for a click on the button, which will invoke the getAll function in the class (aka component's .ts)file -->
+<button (click)="getAll()">Click me to get all tasks</button>
+<!-- Be able to read all the JSON data in the task object -->
+{{task | json}}
+<!-- Loop through an array of tasks, calling each task t -->
+<div *ngFor="let t of tasks">
+  <!-- Display each task's title -->
+<p>{{t.title}}</p>
+<!-- a button click will invoke getOne and pass it the task's _id and define what selectedTask is-->
+<button (click)="getOne(t._id)">Button</button>
+
+<!-- alternatively, this button also listens for a click and invokes choose() and passes it the entire task -->
+<button (click)="choose(t)">Choose a task</button>
+</div>
+<!-- check if selectedTask exists - -->
+<div *ngIf="selectedTask">
+  <!-- display the title and description of the selectedTask -->
+  <p>{{selectedTask.title}}</p>
+  <p>{{selectedTask.description}}</p>
+</div>
