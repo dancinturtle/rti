@@ -1,7 +1,8 @@
 # Public
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.1.
-Don't forget to run npm install in both the outer folder and in the public folder
+
+Don't forget to run `npm install` in both the outer folder and in the public folder
 
 ## Code scaffolding
 
