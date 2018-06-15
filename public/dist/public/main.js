@@ -41,7 +41,7 @@ module.exports = "p {\n    display: inline-block;\n}"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h1>Restful Tasks Interactive</h1>\n<!-- waiting for a click on the button, which will invoke the getAll function in the class (aka component's .ts)file -->\n<button (click)=\"getAll()\">Click me to get all tasks</button>\n<!-- Be able to read all the JSON data in the task object -->\n{{task | json}}\n<!-- Loop through an array of tasks, calling each task t -->\n<div *ngFor=\"let t of tasks\">\n  <!-- Display each task's title -->\n<p>{{t.title}}</p>\n<!-- a button click will invoke getOne and pass it the task's _id and define what selectedTask is-->\n<button (click)=\"getOne(t._id)\">Button</button>\n\n<!-- alternatively, this button also listens for a click and invokes choose() and passes it the entire task -->\n<button (click)=\"choose(t)\">Choose a task</button>\n</div>\n<!-- check if selectedTask exists - -->\n<div *ngIf=\"selectedTask\">\n  <!-- display the title and description of the selectedTask -->\n  <p>{{selectedTask.title}}</p>\n  <p>{{selectedTask.description}}</p>\n</div>"
+module.exports = "<h1>Restful Tasks Interactive</h1>\n<form #cakeForm = \"ngForm\" (submit)=\"submitForm(cakeForm)\">\n<input type=\"text\" name=\"pie\" ngModel>\n<input type=\"text\" name=\"cake\" ngModel>\n\n<button>Submit</button>\n</form>\n<!-- waiting for a click on the button, which will invoke the getAll function in the class (aka component's .ts)file -->\n<button (click)=\"getAll()\">Click me to get all tasks</button>\n<!-- Be able to read all the JSON data in the task object -->\n{{task | json}}\n<!-- Loop through an array of tasks, calling each task t -->\n<div *ngFor=\"let t of tasks\">\n  <!-- Display each task's title -->\n<p>{{t.title}}</p>\n<!-- a button click will invoke getOne and pass it the task's _id and define what selectedTask is-->\n<button (click)=\"getOne(t._id)\">Button</button>\n\n<!-- alternatively, this button also listens for a click and invokes choose() and passes it the entire task -->\n<button (click)=\"choose(t)\">Choose a task</button>\n</div>\n<!-- check if selectedTask exists - -->\n<div *ngIf=\"selectedTask\">\n  <!-- display the title and description of the selectedTask -->\n  <p>{{selectedTask.title}}</p>\n  <p>{{selectedTask.description}}</p>\n</div>\n"
 
 /***/ }),
 
@@ -75,8 +75,11 @@ var AppComponent = /** @class */ (function () {
         // declare the tasks property to be an array - it will be reassigned when we get data from the server
         this.tasks = [];
     }
+    AppComponent.prototype.submitForm = function (form) {
+        console.log("submitting", form.controls);
+    };
     AppComponent.prototype.ngOnInit = function () {
-        // this.getOne("5a7c8edfe2c0e253ad3e4a2b");
+        this.getOne("5a7c8edfe2c0e253ad3e4a2b");
     };
     // user picks one task without another request to the server
     AppComponent.prototype.choose = function (task) {
@@ -143,7 +146,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _http_service_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./http-service.service */ "./src/app/http-service.service.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -155,22 +159,24 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClientModule"]
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClientModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"]
             ],
             providers: [
                 _http_service_service__WEBPACK_IMPORTED_MODULE_3__["HttpServiceService"]
             ],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -290,7 +296,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/dancinturtle/Desktop/codingStuff/CodingDojo/curriculum/mean/Angular/Assignments/restfulTasksInteractive/public/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /Users/dancinturtle/Desktop/codingStuff/CodingDojo/curriculum/mean/Angular/Assignments/rti/public/src/main.ts */"./src/main.ts");
 
 
 /***/ })

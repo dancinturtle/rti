@@ -6,7 +6,7 @@ import { HttpServiceService } from './http-service.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent{
   // declare the tasks property to be an array - it will be reassigned when we get data from the server
   tasks = [];
   // declare the selectedTask property - it will be assigned when we get data
@@ -15,8 +15,12 @@ export class AppComponent implements OnInit{
   // dependency injection - this is how our component will talk to the model (the service)
   constructor(private _httpService: HttpServiceService){}
 
+  submitForm(form){
+    console.log("submitting", form.controls)
+  }
+
   ngOnInit(){
-    // this.getOne("5a7c8edfe2c0e253ad3e4a2b");
+    this.getOne("5a7c8edfe2c0e253ad3e4a2b");
   }
 
   // user picks one task without another request to the server

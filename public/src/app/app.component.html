@@ -1,4 +1,10 @@
 <h1>Restful Tasks Interactive</h1>
+<form #cakeForm = "ngForm" (submit)="submitForm(cakeForm)">
+<input type="text" name="pie" ngModel>
+<input type="text" name="cake" ngModel>
+
+<button>Submit</button>
+</form>
 <!-- waiting for a click on the button, which will invoke the getAll function in the class (aka component's .ts)file -->
 <button (click)="getAll()">Click me to get all tasks</button>
 <!-- Be able to read all the JSON data in the task object -->
